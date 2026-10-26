@@ -1,0 +1,19 @@
+{
+  "cell_executed": 0,
+  "seed": 42,
+  "scores": [
+    91,
+    135
+  ],
+  "reported_dice": 390,
+  "global_sims_after_change": 10,
+  "effective_default_sims": 300,
+  "last_reroll_mask": [
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "original_sha256": "87fc83ef866efa3ca649c38a7c29de50b239e4e4ba59c63e1e5d4b86a86c7d67"
+}

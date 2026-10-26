@@ -1,0 +1,177 @@
+🎲 Iniciando simulación de Montecarlo (Motor de IA tomando decisiones)...
+
+Jugador 1 — Tirada 1: [6, 1, 1, 6, 3]
+Jugador 1 — Tirada 2: [6, 1, 5, 6, 4] | keep: [True, False, False, True, False]
+Jugador 1 — Tirada 3: [2, 3, 5, 5, 6] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'chance' y anota 21 puntos. Total = 21
+
+Jugador 2 — Tirada 1: [3, 4, 4, 6, 4]
+Jugador 2 — Tirada 2: [3, 6, 4, 6, 4] | keep: [True, False, False, True, True]
+Jugador 2 — Tirada 3: [4, 3, 1, 5, 6] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'smallStraight' y anota 30 puntos. Total = 30
+
+Jugador 1 — Tirada 1: [4, 4, 2, 1, 1]
+Jugador 1 — Tirada 2: [4, 4, 1, 1, 1] | keep: [False, True, False, False, False]
+Jugador 1 — Tirada 3: [2, 3, 3, 5, 6] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'threes' y anota 6 puntos. Total = 27
+
+Jugador 2 — Tirada 1: [5, 6, 4, 3, 1]
+Jugador 2 — Tirada 2: [5, 6, 4, 3, 5] | keep: [True, True, True, True, False]
+Jugador 2 — Tirada 3: [5, 3, 5, 3, 2] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'chance' y anota 18 puntos. Total = 48
+
+Jugador 1 — Tirada 1: [6, 5, 1, 1, 1]
+Jugador 1 — Tirada 2: [2, 5, 6, 5, 6] | keep: [False, True, False, False, False]
+Jugador 1 — Tirada 3: [1, 6, 2, 3, 2] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'sixes' y anota 6 puntos. Total = 33
+
+Jugador 2 — Tirada 1: [3, 4, 2, 6, 3]
+Jugador 2 — Tirada 2: [6, 4, 2, 6, 3] | keep: [False, True, True, True, True]
+Jugador 2 — Tirada 3: [2, 6, 3, 4, 2] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'sixes' y anota 6 puntos. Total = 54
+
+Jugador 1 — Tirada 1: [4, 3, 4, 4, 2]
+Jugador 1 — Tirada 2: [2, 3, 5, 4, 2] | keep: [False, True, False, True, True]
+Jugador 1 — Tirada 3: [4, 1, 1, 3, 6] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'fours' y anota 4 puntos. Total = 37
+
+Jugador 2 — Tirada 1: [1, 2, 3, 2, 3]
+Jugador 2 — Tirada 2: [5, 2, 3, 2, 3] | keep: [False, True, True, True, True]
+Jugador 2 — Tirada 3: [3, 1, 6, 3, 3] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'threeOfKind' y anota 16 puntos. Total = 70
+
+Jugador 1 — Tirada 1: [6, 3, 5, 1, 2]
+Jugador 1 — Tirada 2: [2, 3, 5, 6, 4] | keep: [False, True, True, False, False]
+Jugador 1 — Tirada 3: [6, 3, 2, 3, 3] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'threeOfKind' y anota 17 puntos. Total = 54
+
+Jugador 2 — Tirada 1: [2, 2, 4, 2, 5]
+Jugador 2 — Tirada 2: [2, 5, 4, 5, 5] | keep: [True, False, True, False, True]
+Jugador 2 — Tirada 3: [6, 6, 5, 5, 1] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'fives' y anota 10 puntos. Total = 80
+
+Jugador 1 — Tirada 1: [6, 6, 5, 5, 3]
+Jugador 1 — Tirada 2: [6, 4, 2, 5, 3] | keep: [True, False, False, True, True]
+Jugador 1 — Tirada 3: [2, 6, 6, 1, 5] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'fives' y anota 5 puntos. Total = 59
+
+Jugador 2 — Tirada 1: [3, 6, 6, 4, 4]
+Jugador 2 — Tirada 2: [4, 6, 6, 4, 4] | keep: [False, True, True, True, True]
+Jugador 2 — Tirada 3: [5, 6, 5, 6, 1] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'ones' y anota 1 puntos. Total = 81
+
+Jugador 1 — Tirada 1: [2, 2, 5, 4, 1]
+Jugador 1 — Tirada 2: [2, 2, 5, 4, 1] | keep: [True, False, True, True, False]
+Jugador 1 — Tirada 3: [4, 2, 1, 4, 6] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'twos' y anota 2 puntos. Total = 61
+
+Jugador 2 — Tirada 1: [2, 4, 6, 4, 5]
+Jugador 2 — Tirada 2: [2, 4, 2, 4, 1] | keep: [False, True, False, True, False]
+Jugador 2 — Tirada 3: [4, 3, 5, 1, 2] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'largeStraight' y anota 40 puntos. Total = 121
+
+Jugador 1 — Tirada 1: [6, 2, 6, 3, 6]
+Jugador 1 — Tirada 2: [6, 5, 6, 6, 6] | keep: [True, False, True, False, True]
+Jugador 1 — Tirada 3: [4, 2, 3, 2, 4] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'ones' y anota 0 puntos. Total = 61
+
+Jugador 2 — Tirada 1: [5, 6, 4, 5, 5]
+Jugador 2 — Tirada 2: [5, 2, 6, 5, 5] | keep: [True, False, False, True, True]
+Jugador 2 — Tirada 3: [3, 2, 1, 1, 3] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'threes' y anota 6 puntos. Total = 127
+
+Jugador 1 — Tirada 1: [4, 3, 1, 5, 1]
+Jugador 1 — Tirada 2: [4, 3, 5, 5, 6] | keep: [True, True, False, True, False]
+Jugador 1 — Tirada 3: [6, 5, 2, 5, 5] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'fourOfKind' y anota 0 puntos. Total = 61
+
+Jugador 2 — Tirada 1: [3, 4, 3, 2, 2]
+Jugador 2 — Tirada 2: [3, 2, 3, 2, 2] | keep: [True, False, True, True, True]
+Jugador 2 — Tirada 3: [5, 4, 3, 4, 5] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'fours' y anota 8 puntos. Total = 135
+
+Jugador 1 — Tirada 1: [2, 6, 5, 6, 5]
+Jugador 1 — Tirada 2: [3, 6, 5, 6, 5] | keep: [False, True, True, True, True]
+Jugador 1 — Tirada 3: [5, 2, 2, 3, 6] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'fullHouse' y anota 0 puntos. Total = 61
+
+Jugador 2 — Tirada 1: [5, 6, 1, 4, 3]
+Jugador 2 — Tirada 2: [4, 6, 6, 4, 1] | keep: [False, False, False, True, False]
+Jugador 2 — Tirada 3: [5, 5, 6, 6, 4] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'twos' y anota 0 puntos. Total = 135
+
+Jugador 1 — Tirada 1: [4, 4, 3, 4, 4]
+Jugador 1 — Tirada 2: [3, 1, 3, 4, 5] | keep: [False, False, True, True, False]
+Jugador 1 — Tirada 3: [4, 6, 6, 5, 3] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'smallStraight' y anota 30 puntos. Total = 91
+
+Jugador 2 — Tirada 1: [1, 6, 3, 3, 1]
+Jugador 2 — Tirada 2: [1, 5, 3, 3, 1] | keep: [True, False, True, True, True]
+Jugador 2 — Tirada 3: [1, 1, 3, 4, 5] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'fourOfKind' y anota 0 puntos. Total = 135
+
+Jugador 1 — Tirada 1: [6, 3, 4, 1, 1]
+Jugador 1 — Tirada 2: [2, 3, 4, 1, 6] | keep: [False, True, True, False, False]
+Jugador 1 — Tirada 3: [1, 6, 3, 1, 1] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'largeStraight' y anota 0 puntos. Total = 91
+
+Jugador 2 — Tirada 1: [2, 3, 6, 2, 1]
+Jugador 2 — Tirada 2: [2, 2, 4, 2, 6] | keep: [True, False, False, True, False]
+Jugador 2 — Tirada 3: [2, 2, 3, 2, 1] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'fullHouse' y anota 0 puntos. Total = 135
+
+Jugador 1 — Tirada 1: [2, 4, 6, 3, 6]
+Jugador 1 — Tirada 2: [2, 3, 5, 3, 1] | keep: [False, False, False, False, False]
+Jugador 1 — Tirada 3: [1, 4, 5, 5, 4] | keep: [False, False, False, False, False]
+→ Jugador 1 elige categoría 'yahtzee' y anota 0 puntos. Total = 91
+
+Jugador 2 — Tirada 1: [2, 6, 5, 2, 5]
+Jugador 2 — Tirada 2: [5, 2, 1, 5, 6] | keep: [False, False, False, False, False]
+Jugador 2 — Tirada 3: [5, 5, 3, 2, 5] | keep: [False, False, False, False, False]
+→ Jugador 2 elige categoría 'yahtzee' y anota 0 puntos. Total = 135
+✅ Simulación completada.
+
+
+
+===== MARCADOR FINAL =====
+
+Jugador 1: 91 puntos
+  - ones         : 0
+  - twos         : 2
+  - threes       : 6
+  - fours        : 4
+  - fives        : 5
+  - sixes        : 6
+  - threeOfKind  : 17
+  - fourOfKind   : 0
+  - fullHouse    : 0
+  - smallStraight: 30
+  - largeStraight: 0
+  - yahtzee      : 0
+  - chance       : 21
+
+Jugador 2: 135 puntos
+  - ones         : 1
+  - twos         : 0
+  - threes       : 6
+  - fours        : 8
+  - fives        : 10
+  - sixes        : 6
+  - threeOfKind  : 16
+  - fourOfKind   : 0
+  - fullHouse    : 0
+  - smallStraight: 30
+  - largeStraight: 40
+  - yahtzee      : 0
+  - chance       : 18
+
+🏆 Ganador: Jugador 2
+
+===== ESTADÍSTICAS =====
+Total de lanzamientos (dados individuales): 390
+ Cara 1: 51 veces (13.08%)
+ Cara 2: 65 veces (16.67%)
+ Cara 3: 67 veces (17.18%)
+ Cara 4: 64 veces (16.41%)
+ Cara 5: 70 veces (17.95%)
+ Cara 6: 73 veces (18.72%)

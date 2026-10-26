@@ -1,0 +1,261 @@
+{
+  "configuration": {
+    "n": 100000,
+    "seed": 42,
+    "python": "3.12.14",
+    "policy": "Montecarlo de una tirada futura, reevalúa tras tirada real",
+    "sims_per_mask_game": 100,
+    "uniform_probabilities": [
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666
+    ],
+    "loaded_probabilities": [
+      0.14,
+      0.14,
+      0.14,
+      0.14,
+      0.14,
+      0.3
+    ],
+    "seed_offsets": {
+      "convergence": 100,
+      "distribution": 200,
+      "risk": 300,
+      "budget": 400
+    }
+  },
+  "convergence": [
+    {
+      "n": 10,
+      "ev": 17.5,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.19907407407405486,
+      "theoretical_se": 1.1453286393187971,
+      "elapsed_s": 7.569999434053898e-05
+    },
+    {
+      "n": 100,
+      "ev": 17.71,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.4090740740740557,
+      "theoretical_se": 0.362184716966888,
+      "elapsed_s": 0.0005911000189371407
+    },
+    {
+      "n": 1000,
+      "ev": 17.272,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.02892592592594667,
+      "theoretical_se": 0.11453286393187971,
+      "elapsed_s": 0.0072256000130437315
+    },
+    {
+      "n": 5000,
+      "ev": 17.2788,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.022125925925944756,
+      "theoretical_se": 0.05122065388188338,
+      "elapsed_s": 0.03364760000840761
+    },
+    {
+      "n": 10000,
+      "ev": 17.3036,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.002674074074054289,
+      "theoretical_se": 0.03621847169668879,
+      "elapsed_s": 0.06630160001805052
+    },
+    {
+      "n": 50000,
+      "ev": 17.31972,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.01879407407405509,
+      "theoretical_se": 0.01619739295098966,
+      "elapsed_s": 0.3325081999937538
+    },
+    {
+      "n": 100000,
+      "ev": 17.29353,
+      "exact_ev": 17.300925925925945,
+      "absolute_error": 0.007395925925944624,
+      "theoretical_se": 0.011453286393187972,
+      "elapsed_s": 0.686982999992324
+    }
+  ],
+  "fixed_ev_variance": 13.117776920438473,
+  "distributions": [
+    {
+      "scenario": "uniforme",
+      "n_hands": 100000,
+      "yahtzees": 72,
+      "estimate": 0.00072,
+      "theory": 0.0007716049382716047,
+      "ci95_low": 0.0005718308846305667,
+      "ci95_high": 0.0009065269130703536
+    },
+    {
+      "scenario": "cargado",
+      "n_hands": 100000,
+      "yahtzees": 260,
+      "estimate": 0.0026,
+      "theory": 0.0026989119999999995,
+      "ci95_low": 0.002302911354308767,
+      "ci95_high": 0.0029353020100888407
+    }
+  ],
+  "faces": [
+    {
+      "scenario": "uniforme",
+      "face": 1,
+      "count": 83490,
+      "n_dice": 500000,
+      "estimate": 0.16698,
+      "theory": 0.16666666666666666
+    },
+    {
+      "scenario": "uniforme",
+      "face": 2,
+      "count": 83005,
+      "n_dice": 500000,
+      "estimate": 0.16601,
+      "theory": 0.16666666666666666
+    },
+    {
+      "scenario": "uniforme",
+      "face": 3,
+      "count": 83515,
+      "n_dice": 500000,
+      "estimate": 0.16703,
+      "theory": 0.16666666666666666
+    },
+    {
+      "scenario": "uniforme",
+      "face": 4,
+      "count": 82993,
+      "n_dice": 500000,
+      "estimate": 0.165986,
+      "theory": 0.16666666666666666
+    },
+    {
+      "scenario": "uniforme",
+      "face": 5,
+      "count": 83279,
+      "n_dice": 500000,
+      "estimate": 0.166558,
+      "theory": 0.16666666666666666
+    },
+    {
+      "scenario": "uniforme",
+      "face": 6,
+      "count": 83718,
+      "n_dice": 500000,
+      "estimate": 0.167436,
+      "theory": 0.16666666666666666
+    },
+    {
+      "scenario": "cargado",
+      "face": 1,
+      "count": 69772,
+      "n_dice": 500000,
+      "estimate": 0.139544,
+      "theory": 0.14
+    },
+    {
+      "scenario": "cargado",
+      "face": 2,
+      "count": 70346,
+      "n_dice": 500000,
+      "estimate": 0.140692,
+      "theory": 0.14
+    },
+    {
+      "scenario": "cargado",
+      "face": 3,
+      "count": 70065,
+      "n_dice": 500000,
+      "estimate": 0.14013,
+      "theory": 0.14
+    },
+    {
+      "scenario": "cargado",
+      "face": 4,
+      "count": 69639,
+      "n_dice": 500000,
+      "estimate": 0.139278,
+      "theory": 0.14
+    },
+    {
+      "scenario": "cargado",
+      "face": 5,
+      "count": 70186,
+      "n_dice": 500000,
+      "estimate": 0.140372,
+      "theory": 0.14
+    },
+    {
+      "scenario": "cargado",
+      "face": 6,
+      "count": 149992,
+      "n_dice": 500000,
+      "estimate": 0.299984,
+      "theory": 0.3
+    }
+  ],
+  "risk": [
+    {
+      "scenario": "uniforme",
+      "n": 100000,
+      "stop": 21,
+      "reroll_ev_mc": 24.98487,
+      "reroll_ev_exact": 25.0,
+      "yahtzee_mc": 0.02769,
+      "yahtzee_exact": 0.027777777777777776,
+      "lose_mc": 0.02905,
+      "lose_exact": 0.027777777777777776,
+      "tie_mc": 0.05584,
+      "tie_exact": 0.05555555555555555
+    },
+    {
+      "scenario": "cargado",
+      "n": 100000,
+      "stop": 21,
+      "reroll_ev_mc": 25.78493,
+      "reroll_ev_exact": 25.8,
+      "yahtzee_mc": 0.08907,
+      "yahtzee_exact": 0.09,
+      "lose_mc": 0.01994,
+      "lose_exact": 0.019600000000000003,
+      "tie_mc": 0.03934,
+      "tie_exact": 0.039200000000000006
+    }
+  ],
+  "budget": [
+    {
+      "sims_per_mask": 10,
+      "mask": "00101",
+      "elapsed_s": 0.0018103000184055418
+    },
+    {
+      "sims_per_mask": 1000,
+      "mask": "00101",
+      "elapsed_s": 0.13503420000779442
+    },
+    {
+      "sims_per_mask": 100000,
+      "mask": "00101",
+      "elapsed_s": 17.12896400000318
+    }
+  ],
+  "game_summary": {
+    "totals": [
+      214,
+      177
+    ],
+    "winner": "Jugador 1",
+    "physical_dice": 223
+  }
+}
