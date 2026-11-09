@@ -18,7 +18,7 @@ Los números corresponden a las referencias del [estado del arte](../docs/estado
 | [8] `barani2025memoria` | Catálogos sintéticos con restricciones energéticas | Contraste físico; no respalda las probabilidades hipotéticas del experimento | HTML y PDF editorial de 11 páginas disponibles; descripción del simulador y disponibilidad de código consultadas |
 | [9] `kohler2026generalizacion` | Catálogo regional; modelos neuronales, Markov e híbridos con separación temporal | Generalización si se incorpora entrenamiento en una extensión; no es evidencia de nuestro desempeño | HTML y PDF editorial de 22 páginas disponibles; resumen, introducción y §5 consultados |
 | [10] `shahzadi2026incompletitud` | Registros incompletos y variantes de HMM; aplicación empírica a erupciones | Antecedente metodológico de faltantes, no evidencia sísmica directa | HTML y PDF editorial de 29 páginas disponibles; resumen e introducción consultados |
-| [11] `rabiner1989tutorial` | Referencia clásica de HMM | Base del marco teórico; no se cuenta como trabajo reciente | Copia de autor de 30 páginas disponible en UCSB y registro bibliográfico. Lectura crítica del tutorial y erratas pendiente |
+| [11] `rabiner1989tutorial` | Referencia clásica de HMM | Base del marco teórico; no se cuenta como trabajo reciente | Artículo completo disponible en UCSB y MIT; consultadas secciones II, III y V.A sobre cadena, evaluación, decodificación, reestimación y escalamiento. Lectura integral de aplicaciones y revisión de erratas pendientes |
 
 ## Criterios de interpretación
 

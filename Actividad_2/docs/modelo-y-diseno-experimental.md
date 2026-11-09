@@ -1,5 +1,7 @@
 # Modelo y diseño experimental
 
+Las distribuciones, los algoritmos y la distinción entre inferencia y aprendizaje se desarrollan en el [marco teórico](marco-teorico.md).
+
 ## Componentes
 
 Sea Z_t el estado oculto y O_t la observación del evento t. El modelo se especifica como λ = (S, V, A, B, π).
@@ -75,7 +77,7 @@ I es la identidad 3 × 3; U es una matriz 3 × 3 con entradas iguales a 1/3. Las
 
 Forward evaluará la probabilidad de las observaciones; Viterbi recuperará la trayectoria de estados de máxima probabilidad conjunta condicionada a la secuencia observada. La implementación utilizará escalamiento o logaritmos para evitar problemas numéricos.
 
-Se comparará Viterbi con un decodificador que utilice cada observación de forma aislada y un prior explícito calculado sin estados de evaluación. No se presupone que Viterbi maximice la exactitud por evento: su criterio es la probabilidad de la trayectoria completa.
+Se comparará Viterbi con un decodificador que utilice cada observación de forma aislada y el prior marginal q_t=πA^(t−1). La regla será argmax_i q_t(i)B_i,k_t, donde k_t es la categoría observada en el evento t. Este prior se calcula con parámetros conocidos, sin consultar estados generadores ni observaciones de otros eventos. No se presupone que Viterbi maximice la exactitud por evento: su criterio es la probabilidad de la trayectoria completa.
 
 Los parámetros serán conocidos en generación y decodificación dentro de cada escenario. La evaluación corresponde a inferencia con modelo conocido; no incluye aprendizaje de parámetros. Baum-Welch se tratará en el marco teórico como algoritmo de aprendizaje.
 

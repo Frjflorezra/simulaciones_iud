@@ -11,6 +11,7 @@ Los datos son sintéticos y los parámetros son hipotéticos. Cada paso represen
 | Archivo | Contenido |
 |---|---|
 | [Planteamiento](docs/planteamiento.md) | Problema, justificación, objetivos y preguntas de investigación |
+| [Marco teórico](docs/marco-teorico.md) | Distribuciones, propiedad de Markov, Forward, Viterbi, Baum-Welch y ejemplo analítico |
 | [Modelo y diseño experimental](docs/modelo-y-diseno-experimental.md) | Estados, observaciones, matrices, supuestos y escenarios |
 | [Parámetros base](configuracion/modelo_base.json) | Especificación estructurada de S, V, A, B y π |
 | [Estado del arte](docs/estado-del-arte.md) | Revisión preliminar y referencias numeradas |
@@ -28,4 +29,4 @@ Los datos son sintéticos y los parámetros son hipotéticos. Cada paso represen
 
 ## Estado del desarrollo
 
-Se dispone del planteamiento, la especificación del modelo, el diseño experimental y una revisión bibliográfica preliminar con acceso gratuito al texto completo comprobado. La revisión requiere completar lecturas críticas y verificar indexación. La implementación, los experimentos y el análisis de resultados aún no se han realizado. Las instrucciones de ejecución y las versiones de las dependencias se incorporarán con la implementación verificada.
+Se dispone del planteamiento, el marco teórico, la especificación del modelo, el diseño experimental y una revisión bibliográfica preliminar con acceso gratuito al texto completo comprobado. La revisión requiere completar lecturas críticas y verificar indexación. La implementación, los experimentos y el análisis de resultados aún no se han realizado. Los ejemplos numéricos del marco teórico son cálculos analíticos, no resultados experimentales. Las instrucciones de ejecución y las versiones de las dependencias se incorporarán con la implementación verificada.

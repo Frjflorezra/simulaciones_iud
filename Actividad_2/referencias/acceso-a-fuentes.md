@@ -18,7 +18,7 @@ Se verificó que el recurso contuviera el texto y no únicamente una ficha o res
 | [8] | Barani et al., 2025 | Editorial Open Access; PDF de 11 páginas | [Artículo](https://www.nature.com/articles/s43247-025-02608-3?error=cookies_not_supported) · [PDF](https://www.nature.com/articles/s43247-025-02608-3.pdf) |
 | [9] | Köhler et al., 2026 | Editorial Open Access; PDF de 22 páginas | [Artículo](https://link.springer.com/article/10.1007/s00024-026-03910-7) · [PDF](https://link.springer.com/content/pdf/10.1007/s00024-026-03910-7.pdf) |
 | [10] | Shahzadi et al., 2026 | Editorial Open Access; PDF de 29 páginas | [Artículo](https://link.springer.com/article/10.1007/s11634-025-00632-x) · [PDF](https://link.springer.com/content/pdf/10.1007/s11634-025-00632-x.pdf) |
-| [11] | Rabiner, 1989 | Copia gratuita de 30 páginas en la página académica del autor, UCSB | [PDF](https://web.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf) · [Registro del autor](https://web.ece.ucsb.edu/Faculty/Rabiner/ece259/publications.html) |
+| [11] | Rabiner, 1989 | Copias gratuitas del artículo de 30 páginas en UCSB y MIT; la de MIT permite extracción de texto | [PDF UCSB](https://web.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf) · [PDF MIT](https://web.mit.edu/6.435/www/Rabiner89.pdf) · [Registro del autor](https://web.ece.ucsb.edu/Faculty/Rabiner/ece259/publications.html) |
 
 ## Alcance de la comprobación
 
