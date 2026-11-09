@@ -1,0 +1,86 @@
+{
+  "entorno": {
+    "arquitectura": "AMD64",
+    "numpy": "2.3.3",
+    "python": "3.13.3",
+    "sistema": "Windows"
+  },
+  "escenario": "base",
+  "eventos": 50,
+  "generador": "numpy.random.PCG64",
+  "metricas": {
+    "exactitud_independiente": 0.7,
+    "exactitud_viterbi": 0.72,
+    "frecuencia_cambios_estado": 0.2653061224489796,
+    "log_posterior_trayectoria_viterbi": -9.384711067478861,
+    "log_probabilidad_conjunta_viterbi": -49.154189495706,
+    "log_verosimilitud": -39.76947842822714,
+    "log_verosimilitud_por_evento": -0.7953895685645428,
+    "proporcion_estados": [
+      0.62,
+      0.24,
+      0.14
+    ],
+    "proporcion_observaciones": [
+      0.68,
+      0.18,
+      0.14
+    ]
+  },
+  "modelo": {
+    "A": [
+      [
+        0.85,
+        0.12,
+        0.03
+      ],
+      [
+        0.3,
+        0.5,
+        0.2
+      ],
+      [
+        0.1,
+        0.3,
+        0.6
+      ]
+    ],
+    "B": [
+      [
+        0.85,
+        0.12,
+        0.03
+      ],
+      [
+        0.4,
+        0.5,
+        0.1
+      ],
+      [
+        0.1,
+        0.5,
+        0.4
+      ]
+    ],
+    "estados": [
+      "Reposo Sísmico",
+      "Actividad Menor",
+      "Enjambre Sísmico"
+    ],
+    "observaciones": [
+      "Magnitud baja",
+      "Magnitud media",
+      "Magnitud alta"
+    ],
+    "pi": [
+      0.8,
+      0.15,
+      0.05
+    ]
+  },
+  "muestreo": "inversa_cdf_dos_uniformes_por_evento",
+  "semilla": 2026,
+  "tipo_datos": "sinteticos",
+  "tipo_ejecucion": "demostracion_secuencia_unica",
+  "unidad_secuencial": "evento"
+}

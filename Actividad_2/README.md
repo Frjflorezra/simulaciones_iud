@@ -6,6 +6,23 @@ Estudio de simulación de un Modelo Oculto de Markov (HMM) categórico para anal
 
 Los datos son sintéticos y los parámetros son hipotéticos. Cada paso representa un evento del catálogo; no representa un intervalo fijo de tiempo. El modelo permite estudiar la generación y decodificación de secuencias bajo supuestos conocidos. No constituye un modelo validado de predicción de terremotos.
 
+## Inicio rápido
+
+Desde `Actividad_2`, con Python 3.13 y NumPy:
+
+```console
+py -m pip install -r requirements.txt
+py main.py simular --eventos 50 --semilla 2026 --escenario base --salida resultados/mi_ejecucion
+```
+
+La salida contiene `secuencia.csv` y `resumen.json`. La carpeta debe ser nueva: una ejecución nunca sobrescribe otra. En sistemas con el comando `python`, puede utilizarse en lugar de `py`. El entorno verificado es Python 3.13.3 con NumPy 2.3.3.
+
+Para comprobar la implementación:
+
+```console
+py -X utf8 -W error -m unittest discover -s tests -v
+```
+
 ## Contenido
 
 | Archivo | Contenido |
@@ -18,6 +35,8 @@ Los datos son sintéticos y los parámetros son hipotéticos. Cada paso represen
 | [Matriz bibliográfica](referencias/matriz-bibliografica.md) | Comparación de antecedentes y alcance de la evidencia consultada |
 | [Bibliografía BibTeX](referencias/bibliografia.bib) | Diez artículos recientes y una referencia clásica |
 | [Acceso a las fuentes](referencias/acceso-a-fuentes.md) | Enlaces de lectura gratuita y distinción entre textos editoriales y copias de autor |
+| [Implementación](docs/implementacion.md) | Arquitectura, algoritmos, escenarios, ejecución y validación |
+| [Demostración reproducible](resultados/demostracion/README.md) | Una secuencia ejecutada, métricas y comprobación de reproducción |
 
 ## Diseño del estudio
 
@@ -29,4 +48,6 @@ Los datos son sintéticos y los parámetros son hipotéticos. Cada paso represen
 
 ## Estado del desarrollo
 
-Se dispone del planteamiento, el marco teórico, la especificación del modelo, el diseño experimental y una revisión bibliográfica preliminar con acceso gratuito al texto completo comprobado. La revisión requiere completar lecturas críticas y verificar indexación. La implementación, los experimentos y el análisis de resultados aún no se han realizado. Los ejemplos numéricos del marco teórico son cálculos analíticos, no resultados experimentales. Las instrucciones de ejecución y las versiones de las dependencias se incorporarán con la implementación verificada.
+Se dispone del planteamiento, el marco teórico, el diseño experimental, la revisión bibliográfica preliminar y el núcleo ejecutable de simulación e inferencia. Los cuatro escenarios están configurados y hay una demostración de una secuencia, repetida con archivos idénticos en el mismo entorno. El código incluye comprobaciones matemáticas y de exportación.
+
+Siguen pendientes los experimentos de 200 réplicas por escenario, sus intervalos y comparaciones, las figuras finales y las conclusiones experimentales. Los ejemplos del marco teórico son cálculos analíticos, distintos de la demostración ejecutada. La revisión bibliográfica requiere completar lecturas críticas y verificar indexación.
