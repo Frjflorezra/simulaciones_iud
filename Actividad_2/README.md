@@ -13,6 +13,10 @@ Los datos son sintéticos y los parámetros son hipotéticos. Cada paso represen
 | [Planteamiento](docs/planteamiento.md) | Problema, justificación, objetivos y preguntas de investigación |
 | [Modelo y diseño experimental](docs/modelo-y-diseno-experimental.md) | Estados, observaciones, matrices, supuestos y escenarios |
 | [Parámetros base](configuracion/modelo_base.json) | Especificación estructurada de S, V, A, B y π |
+| [Estado del arte](docs/estado-del-arte.md) | Revisión preliminar y referencias numeradas |
+| [Matriz bibliográfica](referencias/matriz-bibliografica.md) | Comparación de antecedentes y alcance de la evidencia consultada |
+| [Bibliografía BibTeX](referencias/bibliografia.bib) | Diez artículos recientes y una referencia clásica |
+| [Acceso a las fuentes](referencias/acceso-a-fuentes.md) | Enlaces de lectura gratuita y distinción entre textos editoriales y copias de autor |
 
 ## Diseño del estudio
 
@@ -24,4 +28,4 @@ Los datos son sintéticos y los parámetros son hipotéticos. Cada paso represen
 
 ## Estado del desarrollo
 
-Se dispone del planteamiento, la especificación del modelo y el diseño experimental. La implementación, la revisión bibliográfica, los experimentos y el análisis de resultados aún no se han realizado. Las instrucciones de ejecución y las versiones de las dependencias se incorporarán con la implementación verificada.
+Se dispone del planteamiento, la especificación del modelo, el diseño experimental y una revisión bibliográfica preliminar con acceso gratuito al texto completo comprobado. La revisión requiere completar lecturas críticas y verificar indexación. La implementación, los experimentos y el análisis de resultados aún no se han realizado. Las instrucciones de ejecución y las versiones de las dependencias se incorporarán con la implementación verificada.
