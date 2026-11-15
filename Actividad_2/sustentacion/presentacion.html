@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Viterbi · Sustentación individual · Francisco Florez</title>
+<style>
+:root{--paper:#f5f2e9;--ink:#172d3d;--muted:#586d7a;--line:#cdd6d9;--blue:#1a6faf;--orange:#c96b2a;--red:#b83830;--scale:1}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:#102330;color:var(--ink);font-family:"Bahnschrift","Segoe UI",sans-serif}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #f4ad62;outline-offset:4px}button:disabled{opacity:.35;cursor:default}[hidden]{display:none!important}
+.stage{position:absolute;inset:0 0 76px;display:grid;place-items:center;overflow:hidden}.deck{position:relative;width:1280px;height:720px;flex:none;transform:scale(var(--scale));transform-origin:center}
+.slide{display:none;position:absolute;inset:0;background:var(--paper);padding:49px 66px 55px;overflow:hidden}.slide.active{display:block;animation:appear .16s ease-out}.slide[aria-hidden="true"]{visibility:hidden}
+@keyframes appear{from{opacity:.2}to{opacity:1}}h1,h2,h3,p{margin:0}h1,h2{font-family:"Palatino Linotype","Book Antiqua",Georgia,serif;font-weight:400;letter-spacing:-1.8px}h1{font-size:78px;line-height:1.02}h2{font-size:48px;line-height:1.08;max-width:1100px}h3{font-size:25px;font-weight:500}.eyebrow{font-size:16px;letter-spacing:2.2px;text-transform:uppercase;margin-bottom:21px;color:var(--muted)}.slide-footer{position:absolute;left:66px;right:66px;bottom:25px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:12px;font-size:14px;color:var(--muted)}.intro{font-size:24px;line-height:1.4;color:var(--muted);max-width:960px;margin-top:18px}.blue{color:var(--blue)}.orange{color:var(--orange)}.red{color:var(--red)}.small{font-size:18px;line-height:1.45;color:var(--muted)}.caption{font-size:17px;line-height:1.4;color:var(--muted)}.pill{display:inline-block;padding:10px 18px;background:#e5eced;font-size:22px}.tag{font-size:16px;letter-spacing:1px;text-transform:uppercase}.rule{width:68px;height:4px;background:var(--blue);margin-bottom:23px}.accent-number{font-family:"Palatino Linotype",Georgia,serif;font-size:70px;line-height:1}.data-number{font-variant-numeric:tabular-nums}
+.cover{background:#142e3e;color:#f6f1e5}.cover .eyebrow{color:#9eb8c5}.cover .slide-footer{color:#b3c5cb;border-color:#42606e}.cover-main{position:relative;z-index:1;max-width:790px}.cover h1 em{font-style:normal;color:#efae70}.cover-subtitle{font-size:21px;line-height:1.42;max-width:750px;margin-top:25px;color:#d0dee2}.cover-author{margin-top:37px;font-size:25px}.cover-advisor{font-size:18px;line-height:1.6;color:#b2c7d0;margin-top:8px}.cover-art{position:absolute;right:50px;top:130px;width:300px;height:450px;opacity:.8}.cover-label{position:absolute;right:72px;top:509px;color:#adc1cb;font-size:17px;text-align:right;line-height:1.5}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:31px}.observation-strip{display:flex;gap:10px;margin:29px 0 23px}.ambiguity{margin-top:31px;border-top:1px solid var(--line);padding-top:20px;display:grid;grid-template-columns:1fr 42px 1fr;align-items:center}.ambiguity strong{display:block;font-size:59px;color:var(--blue);font-weight:400}.ambiguity span{font-size:19px;color:var(--muted)}.question{font-family:"Palatino Linotype",Georgia,serif;font-size:37px;line-height:1.18;margin:26px 0 25px}
+.model-grid{display:grid;grid-template-columns:1fr 1fr .7fr;gap:36px;margin-top:35px}.matrix-title{font-size:23px;margin-bottom:12px}.matrix-label{font-size:16px;color:var(--muted);margin-bottom:16px}.matrix{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}.matrix td{padding:15px 10px;text-align:center;font-size:26px;border-bottom:1px solid var(--line)}.matrix th{font-weight:400;font-size:15px;color:var(--muted);padding:6px}.matrix .match{background:#e1d5bc;color:#63421d}.pi-row{display:grid;grid-template-columns:30px 1fr 42px;align-items:center;gap:8px;font-size:19px;margin:20px 0}.pi-track{height:18px;background:#dce5e8}.pi-track i{display:block;background:var(--blue);height:100%}.model-key{display:flex;gap:27px;font-size:18px;margin-top:23px}.model-bottom{position:absolute;bottom:80px;left:66px;right:66px;font-size:24px;padding:19px 0 0;border-top:1px solid var(--line)}
+.protocol{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;margin-top:32px}.phase{border-top:3px solid var(--blue);padding-top:20px}.phase .accent-number{margin:13px 0 20px}.phase p{font-size:23px;line-height:1.4}.phase .small{font-size:18px;margin-top:13px}.flow{display:flex;align-items:center;gap:14px;margin:27px 0;color:var(--muted);font-size:22px}.flow b{color:var(--ink);font-weight:500}.method-line{border-top:1px solid var(--line);padding:12px 0;font-size:20px;display:flex;gap:18px;align-items:baseline}.method-line b{min-width:150px;font-weight:500}.truth{font-size:19px;color:var(--muted);padding:17px 0;border-top:1px solid var(--line);line-height:1.4}
+.path-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:10px}.sequence-visual{margin-top:10px}.paths-table{width:100%;border-collapse:separate;border-spacing:8px;font-size:20px}.paths-table th{font-weight:400;color:var(--muted);font-size:16px}.paths-table td{padding:10px 0;text-align:center;background:#e8e9e3;font-size:24px}.paths-table .row-name{background:transparent;text-align:left;width:240px;font-size:20px}.paths-table .tie{outline:2px dashed var(--orange);outline-offset:-3px}.path-note{display:flex;justify-content:space-between;gap:25px;margin-top:14px;font-size:18px;color:var(--muted)}
+.chart{width:100%;display:block}.chart-wrap{margin-top:32px}.chart-row-caption{font-size:22px;color:var(--muted);margin-top:9px}.log-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:17px;border-top:1px solid var(--line);font-size:22px}.log-bottom strong{font-weight:500;color:var(--blue)}.mc-grid{display:grid;grid-template-columns:1fr 250px;gap:35px;margin-top:23px}.mc-callout{padding-left:24px;border-left:1px solid var(--line);padding-top:26px}.mc-callout .accent-number{font-size:62px;color:var(--blue);margin:10px 0}.mc-callout p{font-size:19px;line-height:1.5;margin-bottom:20px}.mc-note{font-size:18px;color:var(--muted);margin-top:10px}
+.closing-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:75px;margin-top:35px}.closing-item{display:flex;gap:23px;padding:21px 0;border-top:1px solid var(--line);font-size:27px;line-height:1.3}.closing-item span{font-size:17px;color:var(--blue);padding-top:6px}.limits{border-left:4px solid var(--orange);padding-left:28px;margin-top:9px}.limits h3{font-size:26px;margin-bottom:20px}.limits p{font-size:24px;line-height:1.4}.closing-small{font-size:18px;color:var(--muted);line-height:1.45;margin-top:27px}
+.controls{position:fixed;bottom:0;left:0;right:0;height:76px;display:flex;justify-content:space-between;align-items:center;padding:0 25px;color:#d9e5e8;background:#102330;border-top:1px solid #34505f;gap:12px}.control-group{display:flex;align-items:center;gap:9px}.controls button{background:transparent;border:1px solid #466371;border-radius:4px;padding:9px 12px;color:#e4edf0;font-size:13px;white-space:nowrap}.controls button:hover{background:#254654}.controls button[aria-pressed="true"]{background:#d9e6eb;color:#142e3e}.counter{font-size:15px;min-width:63px;text-align:center}.timer{font-variant-numeric:tabular-nums;font-size:17px;color:#e8b580;min-width:107px}.timer.over{color:#ff9985}.progress{position:fixed;left:0;bottom:76px;width:100%;height:3px;background:#274653}.progress i{display:block;height:100%;width:12.5%;background:#e9aa69;transition:width .15s}.screen-reader{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.notes{position:fixed;right:0;top:0;bottom:76px;width:345px;background:#faf7f0;color:var(--ink);border-left:1px solid #b9c6cc;padding:26px;overflow:auto;z-index:3}.notes h2{font-family:inherit;font-size:24px;letter-spacing:0;line-height:1.3;margin-top:20px}.notes p{font-size:18px;line-height:1.6;margin-top:19px}.notes .cue{font-size:15px;border-top:1px solid var(--line);padding-top:15px;color:var(--muted)}.notes .notes-close{float:right;border:0;background:none;color:var(--ink);font-size:22px}.with-notes .stage{right:345px}.recording .controls,.recording .progress,.recording .notes{display:none}.recording .stage{inset:0}.help{position:fixed;inset:0;margin:auto;width:570px;max-width:90vw;height:fit-content;max-height:85vh;overflow:auto;border:0;padding:30px;background:#faf7f0;color:var(--ink);box-shadow:0 15px 90px #0008;z-index:10}.help::backdrop{background:#0d202dbb}.help h2{font-size:33px;margin-bottom:19px}.help dl{display:grid;grid-template-columns:130px 1fr;gap:10px;font-size:17px}.help dt{font-weight:600}.help dd{margin:0}.help button{padding:10px 20px;border:1px solid var(--ink);background:transparent;color:var(--ink)}.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#142e3e;color:#fff;border:1px solid #6a8796;padding:14px 20px;border-radius:4px;z-index:12;font-size:17px}
+@media(max-width:800px){.controls{padding:0 9px;gap:5px}.controls button{font-size:11px;padding:9px 7px}.controls .secondary{display:none}.timer{min-width:auto;font-size:14px}.notes{width:300px}.with-notes .stage{right:300px}}
+@media(prefers-reduced-motion:reduce){.slide.active{animation:none}.progress i{transition:none}}
+@media print{@page{size:landscape;margin:0}html,body{height:auto;overflow:visible;background:white}.stage{display:block;position:static;overflow:visible}.deck{width:auto;height:auto;transform:none}.slide,.slide[aria-hidden="true"]{display:block!important;visibility:visible!important;position:relative;page-break-after:always;break-after:page;width:1280px;height:720px;print-color-adjust:exact;-webkit-print-color-adjust:exact}.controls,.progress,.notes,.toast,.help{display:none!important}}
+</style>
+</head>
+<body>
+<main class="stage" aria-label="Presentación de ocho diapositivas">
+<div class="deck">
+<section class="slide active cover" aria-label="1. Presentación del estudio" aria-hidden="false">
+  <div class="eyebrow">Simulación · IU Digital de Antioquia</div>
+  <div class="cover-main">
+    <h1>Estados ocultos,<br>observaciones<br><em>ambiguas</em></h1>
+    <p class="cover-subtitle">Evaluación experimental de Viterbi frente a clasificadores estáticos en una simulación de regímenes sísmicos latentes</p>
+    <p class="cover-author">Francisco Javier Florez Ramirez</p>
+    <p class="cover-advisor">Ingeniería de Software y Datos<br>Docente asesor: Dr. Julián Andrés Loaiza López</p>
+  </div>
+  <svg class="cover-art" viewBox="0 0 300 450" aria-hidden="true">
+    <g stroke="#648594" stroke-width="1" fill="none"><path d="M40 80L150 190L260 80M40 80L150 80L260 190M40 190L150 80L260 300M40 300L150 190L260 300M40 300L150 300L260 190"/><path stroke="#efae70" stroke-width="4" d="M40 80L150 190L260 300"/></g>
+    <g fill="#142e3e" stroke="#72909e" stroke-width="1.5"><circle cx="40" cy="80" r="16"/><circle cx="40" cy="190" r="16"/><circle cx="40" cy="300" r="16"/><circle cx="150" cy="80" r="16"/><circle cx="150" cy="190" r="16"/><circle cx="150" cy="300" r="16"/><circle cx="260" cy="80" r="16"/><circle cx="260" cy="190" r="16"/><circle cx="260" cy="300" r="16"/></g>
+    <g fill="#efae70"><circle cx="40" cy="80" r="9"/><circle cx="150" cy="190" r="9"/><circle cx="260" cy="300" r="9"/></g>
+    <text x="150" y="369" text-anchor="middle" fill="#adc1cb" font-size="15">Estados · secuencia · trayectoria</text>
+  </svg>
+  <div class="slide-footer"><span>Estudio metodológico con datos sintéticos</span><span>01 / 08 · 0:00–0:20</span></div>
+</section>
+
+<section class="slide" aria-label="2. Problema y pregunta" aria-hidden="true">
+  <div class="eyebrow">El problema</div>
+  <h2>Una magnitud media<br>puede tener dos explicaciones</h2>
+  <div class="problem-grid">
+    <div>
+      <p class="intro">La emisión no identifica por sí sola el estado.</p>
+      <div class="ambiguity">
+        <div><strong>0.50</strong><span>Actividad Menor</span></div><div style="font-size:38px">=</div><div><strong>0.50</strong><span>Enjambre</span></div>
+      </div>
+      <p class="small" style="margin-top:20px">Probabilidad de emitir magnitud media, dado cada estado.</p>
+    </div>
+    <div>
+      <div class="rule"></div>
+      <p class="question">¿Cómo cambian la trayectoria y los aciertos al considerar toda la secuencia?</p>
+      <p class="small">Comparamos Viterbi con dos reglas que clasifican cada observación por separado.</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Los estados son etiquetas hipotéticas, sin validación sismológica de campo</span><span>02 / 08 · 0:20–1:00</span></div>
+</section>
+
+<section class="slide" aria-label="3. Modelo y métodos" aria-hidden="true">
+  <div class="eyebrow">El modelo</div>
+  <h2>Tres estados y parámetros conocidos</h2>
+  <div class="model-grid">
+    <div><h3 class="matrix-title">A · Transición</h3><p class="matrix-label">Filas: estado actual · Columnas: siguiente</p><div id="matrix-a"></div></div>
+    <div><h3 class="matrix-title">B · Emisión</h3><p class="matrix-label">Columnas: Baja · Media · Alta</p><div id="matrix-b"></div></div>
+    <div><h3 class="matrix-title">π · Inicio</h3><p class="matrix-label">Probabilidad del primer estado</p><div id="pi-chart"></div></div>
+  </div>
+  <div class="model-key"><span>s1 · Reposo</span><span>s2 · Actividad Menor</span><span>s3 · Enjambre</span></div>
+  <div class="model-bottom"><span class="blue">Decodificamos</span> con parámetros fijados; no entrenamos el modelo.</div>
+  <div class="slide-footer"><span>Parámetros hipotéticos del caso didáctico</span><span>03 / 08 · 1:00–1:35</span></div>
+</section>
+
+<section class="slide" aria-label="4. Diseño experimental" aria-hidden="true">
+  <div class="eyebrow">El experimento</div>
+  <h2>Dos fases, los mismos tres métodos</h2>
+  <div class="protocol">
+    <div>
+      <div class="phase"><div class="tag blue">01 · Caso analítico</div><div class="accent-number">5 eventos</div><p>Baja → Baja → Media<br>→ Media → Alta</p><p class="small">Comparamos trayectorias y probabilidad conjunta. Sin etiquetas verdaderas, no calculamos exactitud.</p></div>
+    </div>
+    <div>
+      <div class="phase"><div class="tag blue">02 · Monte Carlo</div><div class="accent-number">100 × 50</div><p>Cien secuencias de cincuenta eventos.</p><p class="small">Semilla 42 · Generación intercalada · Mismas observaciones para los tres métodos</p></div>
+      <div class="method-line"><b class="blue">Viterbi</b><span>Trayectoria completa más probable</span></div>
+      <div class="method-line"><b class="orange">Máxima emisión</b><span>Desempate fijo hacia s2</span></div>
+      <div class="method-line"><b class="red">Bayesiano</b><span>Emisión ponderada por π fijo</span></div>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Los estados verdaderos se reservan para evaluar al final · Una réplica = una secuencia</span><span>04 / 08 · 1:35–2:05</span></div>
+</section>
+
+<section class="slide" aria-label="5. Trayectorias del caso base" aria-hidden="true">
+  <div class="eyebrow">Resultado analítico · T = 5</div>
+  <h2>El retroceso recupera el camino completo</h2>
+  <div id="trellis" class="sequence-visual"></div>
+  <table class="paths-table" id="paths-table" aria-label="Secuencias inferidas por método"></table>
+  <div class="path-note"><span>Camino azul: trayectoria óptima de Viterbi</span><span>Recuadros: empates de máxima emisión resueltos hacia s2</span></div>
+  <div class="slide-footer"><span>s1: Reposo · s2: Actividad Menor · s3: Enjambre · El camino óptimo no son los máximos locales</span><span>05 / 08 · 2:05–2:45</span></div>
+</section>
+
+<section class="slide" aria-label="6. Log-probabilidad conjunta" aria-hidden="true">
+  <div class="eyebrow">Comparación del caso base</div>
+  <h2>Viterbi encuentra la trayectoria más probable</h2>
+  <p class="intro">Mayor log-probabilidad conjunta → punto más a la derecha</p>
+  <div class="chart-wrap" id="log-chart"></div>
+  <div class="log-bottom"><strong>Probabilidad del camino ≠ exactitud</strong><span>No hay estados verdaderos para estos cinco eventos.</span></div>
+  <div class="slide-footer"><span>Las tres trayectorias se evalúan con las mismas matrices A, B y π</span><span>06 / 08 · 2:45–3:20</span></div>
+</section>
+
+<section class="slide" aria-label="7. Resultados Monte Carlo" aria-hidden="true">
+  <div class="eyebrow">Resultado estadístico · N = 100 · T = 50</div>
+  <h2>Mayor exactitud media en esta simulación</h2>
+  <div class="mc-grid">
+    <div id="mc-chart"></div>
+    <div class="mc-callout"><p>Ventaja media de Viterbi</p><div class="accent-number" id="gain-b1">2.90</div><p>puntos porcentuales<br>frente a máxima emisión</p><div class="accent-number" id="gain-b2">11.08</div><p>puntos porcentuales<br>frente al bayesiano estático</p></div>
+  </div>
+  <div class="mc-note">IC95 % aproximados de la media entre secuencias · Desviación muestral · Sin valor p calculado</div>
+  <div class="slide-footer"><span>Exactitud evaluada contra los estados sintéticos generados</span><span>07 / 08 · 3:20–4:00</span></div>
+</section>
+
+<section class="slide" aria-label="8. Conclusiones y límites" aria-hidden="true">
+  <div class="eyebrow">Conclusiones</div>
+  <h2>Una ventaja observada,<br>con un alcance definido</h2>
+  <div class="closing-grid">
+    <div>
+      <div class="closing-item"><span>01</span><p>Viterbi recupera la trayectoria de mayor probabilidad conjunta.</p></div>
+      <div class="closing-item"><span>02</span><p>Obtiene la mayor exactitud media entre los tres métodos evaluados.</p></div>
+      <div class="closing-item"><span>03</span><p>Los cálculos y los datos exportados permiten reproducir el estudio.</p></div>
+    </div>
+    <div class="limits"><h3>Lo que estos resultados permiten afirmar</h3><p>Una comparación de métodos completos, con parámetros conocidos y datos sintéticos.</p><p class="closing-small">No se aísla el efecto de A. No se demuestra menor variabilidad en todos los casos. No constituye predicción de terremotos.</p></div>
+  </div>
+  <div class="slide-footer"><span>Francisco Javier Florez Ramirez · Gracias por su atención</span><span>08 / 08 · 4:00–4:30</span></div>
+</section>
+</div>
+</main>
+<aside class="notes" id="notes" hidden aria-label="Notas del expositor"><button class="notes-close" id="close-notes" aria-label="Cerrar notas">×</button><div class="tag" id="notes-time"></div><h2 id="notes-title"></h2><p id="notes-text"></p><p class="cue" id="notes-cue"></p></aside>
+<div class="progress" aria-hidden="true"><i id="progress-fill"></i></div>
+<nav class="controls" aria-label="Controles de presentación">
+  <div class="control-group"><button id="prev" aria-label="Diapositiva anterior">← Anterior</button><span class="counter" id="counter" aria-live="polite">1 / 8</span><button id="next" aria-label="Diapositiva siguiente">Siguiente →</button></div>
+  <div class="control-group"><span class="timer" id="timer" aria-label="Tiempo de ensayo">0:00 / 4:30</span><button id="timer-button" class="secondary" aria-pressed="false">Iniciar ensayo</button></div>
+  <div class="control-group"><button id="notes-button" aria-pressed="false">Notas</button><button id="record-button" class="secondary">Modo grabación</button><button id="fullscreen-button">Pantalla completa</button><button id="help-button" aria-label="Ayuda y atajos">?</button></div>
+</nav>
+<dialog class="help" id="help"><h2>Para presentar y ensayar</h2><dl><dt>← → / Espacio</dt><dd>Cambiar de diapositiva</dd><dt>Inicio / Fin</dt><dd>Primera o última diapositiva</dd><dt>F</dt><dd>Entrar o salir de pantalla completa</dd><dt>N</dt><dd>Mostrar u ocultar el guion de la diapositiva</dd><dt>G</dt><dd>Modo de grabación: ocultar o recuperar controles</dd><dt>T</dt><dd>Iniciar o pausar el cronómetro</dd><dt>R</dt><dd>Reiniciar el cronómetro</dd><dt>Esc</dt><dd>Cerrar notas, salir del modo grabación o de pantalla completa</dd></dl><p class="small" style="margin:20px 0">Las diapositivas avanzan manualmente. Los tiempos son una referencia para un video de 4:30 minutos.</p><button id="close-help">Continuar</button></dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+<noscript>Activa JavaScript en el navegador para utilizar la presentación.</noscript>
+<script id="experiment-data" type="application/json">{"configuration":{"N_runs":100,"T":50,"seed":42,"generator":"numpy.random.RandomState / MT19937","draw_order":"state_then_emission_each_event","tie_break":"first_index","state_index_base":0,"std_ddof":1,"ci95_multiplier":1.96},"parameters":{"A":[[0.85,0.12,0.03],[0.3,0.5,0.2],[0.1,0.3,0.6]],"B":[[0.85,0.12,0.03],[0.4,0.5,0.1],[0.1,0.5,0.4]],"pi":[0.8,0.15,0.05]},"base":{"observations":[0,0,1,1,2],"models":{"viterbi":{"path":[0,0,1,2,2],"probability":0.0007074720000000001,"log_probability":-7.253812505201762},"b1":{"path":[0,0,1,1,2],"probability":0.0005895600000000005,"log_probability":-7.436134061995716},"b2":{"path":[0,0,0,0,0],"probability":0.00013034287260000008,"log_probability":-8.945342098021023}},"delta":[[0.68,0.06,0.005000000000000001],[0.49130000000000007,0.03264,0.00204],[0.05011260000000001,0.029478000000000004,0.007369500000000001],[0.0051114852,0.007369500000000001,0.0029478000000000004],[0.00013034287259999997,0.00036847500000000005,0.0007074720000000001]],"psi":[[0,0,0],[0,0,0],[0,0,0],[0,1,1],[0,1,2]],"b1_ties":[2,3]},"summary":{"viterbi":{"mean":0.7262,"std":0.1094225430580597,"min":0.42,"max":0.94,"ci95":[0.7047531815606203,0.7476468184393796]},"b1":{"mean":0.6972,"std":0.08394418540093329,"min":0.48,"max":0.88,"ci95":[0.6807469396614171,0.713653060338583]},"b2":{"mean":0.6154,"std":0.15183337491267768,"min":0.3,"max":0.92,"ci95":[0.5856406585171151,0.6451593414828848]}}}</script>
+<script id="notes-data" type="application/json">[{"title":"Presentación del estudio","start":0,"end":20,"text":"Cordial saludo. Mi nombre es Francisco Javier Florez Ramirez, estudiante de Ingeniería de Software y Datos de la IU Digital de Antioquia. Bajo la asesoría del doctor Julián Andrés Loaiza López, presento una comparación del algoritmo de Viterbi y dos clasificadores estáticos mediante una simulación inspirada en actividad sísmica.","cue":"Presentar el título y el alcance del trabajo; mirar a la cámara al iniciar."},{"title":"Problema y pregunta","start":20,"end":60,"text":"El problema consiste en recuperar estados ocultos a partir de observaciones que pueden ser ambiguas. En nuestro caso, una magnitud media tiene la misma probabilidad de emisión en Actividad Menor y en Enjambre: cero coma cinco. Por eso, la magnitud de un solo evento no basta para distinguirlos mediante máxima emisión. La pregunta es cómo cambian las trayectorias y la precisión al comparar Viterbi, que utiliza la secuencia completa, con dos reglas que clasifican cada observación por separado. Trabajamos con datos sintéticos; estas etiquetas no representan estados sísmicos validados en campo.","cue":"Señalar el empate 0.50 frente a 0.50 y cerrar con la pregunta."},{"title":"Modelo y métodos","start":60,"end":95,"text":"El modelo tiene tres estados: Reposo, Actividad Menor y Enjambre, y tres observaciones: magnitud Baja, Media y Alta. La matriz A describe las transiciones; B, las emisiones; y pi, la distribución inicial. Estos parámetros son hipotéticos y conocidos: no entrenamos el modelo. Comparamos tres métodos. Viterbi busca la trayectoria completa más probable. El primer baseline selecciona la máxima emisión y resuelve empates hacia Actividad Menor. El segundo pondera la emisión por el prior inicial fijo.","cue":"Explicar A, B y pi sin leer todas las celdas. Destacar la diferencia entre decodificar y entrenar."},{"title":"Diseño experimental","start":95,"end":125,"text":"La evaluación tiene dos fases. Primero analizamos la secuencia Baja, Baja, Media, Media y Alta, comparando las trayectorias y su probabilidad conjunta. Después generamos cien secuencias de cincuenta eventos, con semilla cuarenta y dos y un protocolo de muestreo fijo. En cada réplica los tres métodos reciben las mismas observaciones. Los estados verdaderos se reservan para calcular la exactitud al final. La unidad de repetición es cada secuencia completa.","cue":"Recorrer las dos fases y señalar que las etiquetas verdaderas solo se usan al evaluar."},{"title":"Trayectorias en el caso base","start":125,"end":165,"text":"En el caso de cinco eventos, Viterbi reconstruye Reposo, Reposo, Actividad Menor, Enjambre y Enjambre. El clasificador por máxima emisión elige Actividad Menor en las dos observaciones medias, aplicando la misma convención de desempate que usamos en Monte Carlo. El clasificador bayesiano asigna Reposo a todos los eventos por el peso del prior inicial. La celosía muestra que Viterbi conserva predecesores y reconstruye el camino mediante retroceso. No calcula la trayectoria eligiendo simplemente el estado con mayor valor local en cada instante.","cue":"Seguir el camino azul y comparar el cuarto evento entre Viterbi y máxima emisión."},{"title":"Probabilidad de las trayectorias","start":165,"end":200,"text":"Las tres trayectorias se comparan bajo el mismo modelo. Viterbi obtiene una log-probabilidad conjunta de menos siete coma dos cinco tres ocho; máxima emisión, menos siete coma cuatro tres seis uno; y el bayesiano estático, menos ocho coma nueve cuatro cinco tres. Un valor mayor, es decir, menos negativo, indica mayor probabilidad conjunta. Este resultado verifica el objetivo de Viterbi. No equivale a demostrar mayor exactitud para esos cinco eventos, porque el caso ilustrativo no aporta estados verdaderos.","cue":"Señalar los puntos de izquierda a derecha. Distinguir probabilidad del camino y exactitud."},{"title":"Evaluación Monte Carlo","start":200,"end":240,"text":"En Monte Carlo sí conocemos los estados generados y podemos medir aciertos. Viterbi alcanza una exactitud media del setenta y dos coma sesenta y dos por ciento; máxima emisión, sesenta y nueve coma setenta y dos; y el bayesiano, sesenta y uno coma cincuenta y cuatro. Las ventajas medias son de dos coma noventa y once coma cero ocho puntos porcentuales. Los intervalos reflejan la incertidumbre de las medias entre secuencias. Son intervalos aproximados del noventa y cinco por ciento; no presentamos un valor p ni una prueba de hipótesis pareada.","cue":"Mostrar las tres medias y sus intervalos. Decir «puntos porcentuales», no porcentaje relativo."},{"title":"Conclusiones y límites","start":240,"end":270,"text":"Concluimos que, para esta configuración, Viterbi encuentra la trayectoria más probable y obtiene la mayor exactitud media entre los tres métodos. Esto no implica que siempre tenga menos variabilidad ni permite atribuir la diferencia únicamente a la matriz de transición. El experimento compara métodos completos. Los resultados se limitan a datos sintéticos y parámetros conocidos: no constituyen una herramienta de predicción de terremotos. El código y los datos exportados permiten reproducir la evaluación. Muchas gracias.","cue":"Cerrar mirando a la cámara. Evitar afirmar utilidad predictiva sobre sismos reales."}]</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('experiment-data').textContent);
+const notes=JSON.parse(document.getElementById('notes-data').textContent);
+const keys=['viterbi','b1','b2'], labels=['Viterbi','Máxima emisión','Bayesiano estático'];
+const colors=['#1a6faf','#c96b2a','#b83830'];
+const slides=Array.from(document.querySelectorAll('.slide'));
+let index=0, notesOpen=false, recording=false, running=false, elapsed=0, lastTick=0, toastTimeout;
+function time(n){return Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0');}
+function fmt(n,decimals){return Number(n).toFixed(decimals);}
+function matrix(values,emission){
+  let h='<table class="matrix"><thead><tr><th></th>';
+  ['1','2','3'].forEach((s)=>{h+='<th>'+(emission?['Baja','Media','Alta'][Number(s)-1]:'s'+s)+'</th>';});
+  h+='</tr></thead><tbody>';
+  values.forEach((row,i)=>{h+='<tr><th>s'+(i+1)+'</th>';row.forEach((v,j)=>{h+='<td'+(emission&&j===1&&i>0?' class="match"':'')+'>'+fmt(v,2)+'</td>';});h+='</tr>';});
+  return h+'</tbody></table>';
+}
+document.getElementById('matrix-a').innerHTML=matrix(data.parameters.A,false);
+document.getElementById('matrix-b').innerHTML=matrix(data.parameters.B,true);
+document.getElementById('pi-chart').innerHTML=data.parameters.pi.map((v,i)=>'<div class="pi-row"><span>s'+(i+1)+'</span><span class="pi-track"><i style="width:'+(v*100)+'%"></i></span><span>'+fmt(v,2)+'</span></div>').join('');
+function svg(title,w,h,content){return '<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+title+'" xmlns="http://www.w3.org/2000/svg"><title>'+title+'</title>'+content+'</svg>';}
+function trellis(){
+  let s='<defs><marker id="path-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#1a6faf"/></marker></defs>';
+  const path=data.base.models.viterbi.path, xs=[215,415,615,815,1015], ys=[42,112,182];
+  for(let t=1;t<5;t++){s+='<line x1="'+(xs[t-1]+23)+'" y1="'+ys[path[t-1]]+'" x2="'+(xs[t]-25)+'" y2="'+ys[path[t]]+'" stroke="#1a6faf" stroke-width="4" marker-end="url(#path-arrow)"/>';}
+  for(let j=0;j<3;j++){s+='<text x="115" y="'+(ys[j]+7)+'" fill="#586d7a" font-size="20">s'+(j+1)+'</text>';}
+  for(let t=0;t<5;t++){
+    for(let j=0;j<3;j++){const chosen=path[t]===j;s+='<circle cx="'+xs[t]+'" cy="'+ys[j]+'" r="23" fill="'+(chosen?'#1a6faf':'#e4e9e8')+'" stroke="'+(chosen?'#1a6faf':'#cdd6d9')+'"/><text x="'+xs[t]+'" y="'+(ys[j]+7)+'" text-anchor="middle" fill="'+(chosen?'white':'#586d7a')+'" font-size="19">s'+(j+1)+'</text>';}
+    s+='<text x="'+xs[t]+'" y="231" fill="#586d7a" font-size="17" text-anchor="middle">'+['Baja','Baja','Media','Media','Alta'][t]+'</text>';
+  }
+  return svg('Camino óptimo: s1, s1, s2, s3, s3 en cinco eventos',1148,249,s);
+}
+document.getElementById('trellis').innerHTML=trellis();
+let table='<thead><tr><th>Método</th>';
+for(let t=1;t<=5;t++){table+='<th>t = '+t+'</th>';}table+='</tr></thead><tbody>';
+keys.forEach((key,row)=>{table+='<tr><td class="row-name" style="color:'+colors[row]+'">'+labels[row]+'</td>';data.base.models[key].path.forEach((state,t)=>{table+='<td style="color:'+colors[row]+'"'+(key==='b1'&&data.base.b1_ties.includes(t)?' class="tie"':'')+'>s'+(state+1)+'</td>';});table+='</tr>';});
+document.getElementById('paths-table').innerHTML=table+'</tbody>';
+function logChart(){
+  let s='',left=300,right=1080,low=-9.3,high=-7.0;
+  const x=(v)=>left+(v-low)/(high-low)*(right-left);
+  [-9,-8.5,-8,-7.5,-7].forEach(v=>{s+='<line x1="'+x(v)+'" y1="15" x2="'+x(v)+'" y2="255" stroke="#d5dddf"/><text x="'+x(v)+'" y="288" text-anchor="middle" fill="#586d7a" font-size="20">'+fmt(v,1)+'</text>';});
+  keys.forEach((key,i)=>{let y=48+i*86,val=data.base.models[key].log_probability;s+='<text x="0" y="'+(y+7)+'" fill="'+colors[i]+'" font-size="25">'+labels[i]+'</text><line x1="'+left+'" y1="'+y+'" x2="'+right+'" y2="'+y+'" stroke="#cdd6d9"/><circle cx="'+x(val)+'" cy="'+y+'" r="10" fill="'+colors[i]+'"/><text x="'+x(val)+'" y="'+(y-18)+'" text-anchor="middle" fill="'+colors[i]+'" font-size="25" font-weight="600">'+fmt(val,4)+'</text>';});
+  s+='<text x="690" y="325" fill="#586d7a" text-anchor="middle" font-size="20">ln P(observaciones, trayectoria | modelo)</text>';
+  return svg('Log-probabilidad conjunta: Viterbi '+fmt(data.base.models.viterbi.log_probability,4)+', máxima emisión '+fmt(data.base.models.b1.log_probability,4)+', bayesiano '+fmt(data.base.models.b2.log_probability,4),1148,345,s);
+}
+document.getElementById('log-chart').innerHTML=logChart();
+function mcChart(){
+  let s='',left=252,right=806;
+  const x=(v)=>left+v*(right-left)/100;
+  [0,20,40,60,80,100].forEach(v=>{s+='<line x1="'+x(v)+'" y1="20" x2="'+x(v)+'" y2="306" stroke="#d5dddf"/><text x="'+x(v)+'" y="337" text-anchor="middle" fill="#586d7a" font-size="20">'+v+'</text>';});
+  keys.forEach((key,i)=>{const st=data.summary[key],y=63+i*100,lo=st.ci95[0]*100,hi=st.ci95[1]*100,m=st.mean*100;s+='<text x="0" y="'+(y+7)+'" fill="'+colors[i]+'" font-size="23">'+labels[i]+'</text><line x1="'+x(lo)+'" y1="'+y+'" x2="'+x(hi)+'" y2="'+y+'" stroke="'+colors[i]+'" stroke-width="4"/><path d="M'+x(lo)+' '+(y-11)+'v22M'+x(hi)+' '+(y-11)+'v22" stroke="'+colors[i]+'" stroke-width="3"/><circle cx="'+x(m)+'" cy="'+y+'" r="9" fill="'+colors[i]+'"/><text x="'+x(m)+'" y="'+(y-22)+'" text-anchor="middle" font-size="25" fill="'+colors[i]+'" font-weight="600">'+fmt(m,2)+' %</text><text x="'+x(m)+'" y="'+(y+35)+'" text-anchor="middle" font-size="19" fill="#586d7a">['+fmt(lo,2)+'; '+fmt(hi,2)+']</text>';});
+  s+='<text x="529" y="380" text-anchor="middle" font-size="21" fill="#586d7a">Exactitud media (%)</text>';
+  return svg('Medias e intervalos de confianza de exactitud Monte Carlo',840,402,s);
+}
+document.getElementById('mc-chart').innerHTML=mcChart();
+document.getElementById('gain-b1').textContent=fmt((data.summary.viterbi.mean-data.summary.b1.mean)*100,2);
+document.getElementById('gain-b2').textContent=fmt((data.summary.viterbi.mean-data.summary.b2.mean)*100,2);
+function resize(){const extra=notesOpen&&!recording?(innerWidth<=800?300:345):0;const bar=recording?0:76;const scale=Math.max(.12,Math.min((innerWidth-extra-24)/1280,(innerHeight-bar-24)/720));document.documentElement.style.setProperty('--scale',String(scale));}
+function show(i){
+ index=Math.max(0,Math.min(slides.length-1,i));
+ slides.forEach((slide,j)=>{slide.classList.toggle('active',j===index);slide.setAttribute('aria-hidden',String(j!==index));slide.inert=j!==index;});
+ document.getElementById('counter').textContent=(index+1)+' / '+slides.length;
+ document.getElementById('progress-fill').style.width=((index+1)/slides.length*100)+'%';
+ document.getElementById('prev').disabled=index===0;document.getElementById('next').disabled=index===slides.length-1;
+ const n=notes[index];document.getElementById('notes-time').textContent=time(n.start)+'–'+time(n.end)+' · '+(n.end-n.start)+' segundos';
+ document.getElementById('notes-title').textContent=(index+1)+'. '+n.title;document.getElementById('notes-text').textContent=n.text;document.getElementById('notes-cue').textContent=n.cue;
+ history.replaceState(null,'','#diapositiva-'+(index+1));
+}
+function toggleNotes(force){notesOpen=typeof force==='boolean'?force:!notesOpen;if(recording&&notesOpen)toggleRecording(false);document.getElementById('notes').hidden=!notesOpen;document.body.classList.toggle('with-notes',notesOpen);document.getElementById('notes-button').setAttribute('aria-pressed',String(notesOpen));resize();}
+function toast(text){const el=document.getElementById('toast');el.textContent=text;el.hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>{el.hidden=true;},2500);}
+function toggleRecording(force){recording=typeof force==='boolean'?force:!recording;if(recording){notesOpen=false;document.getElementById('notes').hidden=true;document.body.classList.remove('with-notes');document.getElementById('notes-button').setAttribute('aria-pressed','false');}document.body.classList.toggle('recording',recording);if(recording)toast('Modo de grabación · Pulsa G para recuperar los controles');resize();}
+async function fullscreen(){try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch(e){toast('Utiliza la opción de pantalla completa de tu navegador.');}}
+function updateClock(){document.getElementById('timer').textContent=time(elapsed)+' / 4:30';document.getElementById('timer').classList.toggle('over',elapsed>270);}
+function timerToggle(){if(running){elapsed+=(performance.now()-lastTick)/1000;running=false;}else{lastTick=performance.now();running=true;}document.getElementById('timer-button').textContent=running?'Pausar ensayo':'Continuar ensayo';document.getElementById('timer-button').setAttribute('aria-pressed',String(running));updateClock();}
+function resetTimer(){elapsed=0;lastTick=performance.now();updateClock();}
+setInterval(()=>{if(running){const now=performance.now();elapsed+=(now-lastTick)/1000;lastTick=now;updateClock();}},200);
+document.getElementById('prev').onclick=()=>show(index-1);document.getElementById('next').onclick=()=>show(index+1);
+document.getElementById('notes-button').onclick=()=>toggleNotes();document.getElementById('close-notes').onclick=()=>toggleNotes(false);
+document.getElementById('record-button').onclick=()=>toggleRecording();document.getElementById('fullscreen-button').onclick=fullscreen;
+document.getElementById('timer-button').onclick=timerToggle;document.getElementById('help-button').onclick=()=>document.getElementById('help').showModal();
+document.getElementById('close-help').onclick=()=>document.getElementById('help').close();
+document.addEventListener('keydown',(e)=>{
+ const help=document.getElementById('help');if(help.open)return;
+ if(e.ctrlKey||e.altKey||e.metaKey)return;
+ const key=e.key.toLowerCase();if(e.target.closest('button')&&(key===' '||key==='enter'))return;
+ if(['arrowright','arrowdown',' ','pagedown'].includes(key)){e.preventDefault();show(index+1);}
+ else if(['arrowleft','arrowup','pageup'].includes(key)){e.preventDefault();show(index-1);}
+ else if(key==='home'){e.preventDefault();show(0);}else if(key==='end'){e.preventDefault();show(slides.length-1);}
+ else if(key==='n'){e.preventDefault();toggleNotes();}else if(key==='g'){e.preventDefault();toggleRecording();}
+ else if(key==='f'){e.preventDefault();fullscreen();}else if(key==='t'){e.preventDefault();timerToggle();}
+ else if(key==='r'){e.preventDefault();resetTimer();}else if(key==='escape'){toggleNotes(false);toggleRecording(false);}
+ else if(key==='?')help.showModal();
+});
+window.addEventListener('resize',resize);document.addEventListener('fullscreenchange',resize);
+const initial=Number(location.hash.replace('#diapositiva-',''))-1;show(Number.isInteger(initial)&&initial>=0?initial:0);resize();
+</script>
+</body></html>
